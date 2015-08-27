@@ -2,9 +2,12 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="drone.css" />
+		<link rel="stylesheet" href="static/drone.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="drone.js"></script>
+		<script src="static/DroneApp.js"></script>
+		<script src="static/DroneData.js"></script>
+		<script src="static/DroneHelper.js"></script>
+		<script src="static/DroneVisualize.js"></script>
 		<script>
 			$(function(){
 				DroneApp.initialize();
@@ -13,7 +16,10 @@
 	</head>
 	<body>
 		<h1>Drone Strikes</h1>
-		<div class="filters" />
-		<div class="visualizations" />
+		<div class="filters"></div>
+		<div class="visualizations"></div>
+		<div class="loader">
+			<img src="spinner.gif">
+		</div>
 	</body>
 </html>
