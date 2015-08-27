@@ -12,6 +12,7 @@ var DroneData = {
 	setAllData: function(data) {
 		for(var i = 0; i < data.length; i++) {
 			var date = new Date(data[i].date);
+			data[i].date = date;
 			data[i].year = date.getFullYear();
 		}
 		this.data = data;
@@ -31,9 +32,5 @@ var DroneData = {
 			return (item.country == _this.country || _this.country == _this.ALL_COUNTRIES) &&
 				(item.year == _this.year || _this.year == _this.ALL_YEARS);
 		});
-
-		console.log(this.country);
-		console.log(this.year);
-		console.log(this.filtered.length);
 	}
 };

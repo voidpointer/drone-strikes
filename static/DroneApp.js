@@ -9,9 +9,10 @@ var DroneApp = {
 			url: "http://api.dronestre.am/data",
 			dataType: "jsonp",
 			success: function(data) {
-				$(".loader").hide();
 				DroneData.setAllData(data.strike);
+				DroneData.filterData();
 				_this.processData();
+				DroneVisualize.update();
 			}
 		});
 	},
