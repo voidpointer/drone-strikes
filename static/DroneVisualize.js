@@ -37,9 +37,13 @@ var DroneVisualize = {
 
 		$(".visualizations").append($("<div class='lineChart'>"));
 
-		var margin = {top: 20, right: 20, bottom: 30, left: 50},
-		    width = 960 - margin.left - margin.right,
-		    height = 500 - margin.top - margin.bottom;
+		// on larger screens the full size will be 960x500 and on smaller screens it's scaled down with the same aspect ratio
+		var totalWidth = $(".lineChart").width() < 960 ? Math.max(400, $(window).width()) : 960,
+			totalHeight = 500 * totalWidth / 960;
+
+		var margin = {top: 20, right: 20, bottom: 30, left: 30},
+		    width = totalWidth - margin.left - margin.right,
+		    height = totalHeight - margin.top - margin.bottom;
 
 		var x = d3.time.scale()
 		    .range([0, width]);
@@ -93,6 +97,7 @@ var DroneVisualize = {
 		    .attr("d", line);
 	},
 	makeSomethingElse: function(data) {
-		$(".visualizations").append($("<div class='otherChart'>"));
+		// TODO
+		//$(".visualizations").append($("<div class='otherChart'>"));
 	}
 };

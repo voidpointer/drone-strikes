@@ -8,6 +8,12 @@ body {
 
 .lineChart {
 	font: 10px sans-serif;
+	width:960px;
+}
+@media (max-width: 600px) {
+	.lineChart {
+		width:100%;
+	}
 }
 .lineChart .axis path,
 .lineChart .axis line {
