@@ -10,8 +10,6 @@ var DroneVisualize = {
 
 		if (data.length) {
 			var lineChartField = "deaths_max";
-			$(".visualizations").append($("<p>").text("Graphing: " + lineChartField));
-
 			this.makeLineChart(data, lineChartField);
 			this.makeSomethingElse(data);
 		} else {
@@ -22,8 +20,7 @@ var DroneVisualize = {
 		$(".loader").hide();
 	},
 	makeLineChart: function(data, field) {
-		$(".visualizations").append($("<div class='lineChart'>"));
-
+		// throw out data points with values that can't be graphed
 		var i = data.length;
 		while(i--) {
 			if (isNaN(+data[i][field])) {
@@ -34,7 +31,11 @@ var DroneVisualize = {
 		if (data.length <= 1) {
 			$(".visualizations").append($("<p>").text("Not enough data to graph"));
 			return;
+		} else {
+			$(".visualizations").append($("<p>").text("Graphing: " + field));			
 		}
+
+		$(".visualizations").append($("<div class='lineChart'>"));
 
 		var margin = {top: 20, right: 20, bottom: 30, left: 50},
 		    width = 960 - margin.left - margin.right,
@@ -91,6 +92,7 @@ var DroneVisualize = {
 		    .attr("class", "line")
 		    .attr("d", line);
 	},
-	makeSomethingElse: function() {
+	makeSomethingElse: function(data) {
+		$(".visualizations").append($("<div class='otherChart'>"));
 	}
 };
